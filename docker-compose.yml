@@ -1,0 +1,16 @@
+version: '3'
+services:
+  app:
+    container_name: api-auth
+    build: .
+    ports:
+      - 8080:4200
+    depends_on:
+      - cfucdb
+
+  cfucdb:
+    image: mongo
+    container_name: db-cfuc
+    ports:
+      - 27017:27017
+
