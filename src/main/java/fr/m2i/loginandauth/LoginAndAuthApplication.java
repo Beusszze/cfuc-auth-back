@@ -35,8 +35,8 @@ public class LoginAndAuthApplication {
             userService.saveRole(new Role(null, "ROLE_USER"));
             userService.saveRole(new Role(null, "ROLE_ADMIN"));
 
-            userService.saveUser(new User(null, "Benoit", "ben", "1234", null));
-            userService.saveUser(new User(null, "Toto", "xxtotodu59xx", "1234", null));
+            userService.saveUser(new User(null, "ben", "1234", null));
+            userService.saveUser(new User(null, "xxtotodu59xx", "1234", null));
 
             userService.addRoleToUser("ben", "ROLE_USER");
             userService.addRoleToUser("xxtotodu59xx", "ROLE_ADMIN");

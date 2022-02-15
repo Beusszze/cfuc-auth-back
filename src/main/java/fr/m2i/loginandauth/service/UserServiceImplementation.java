@@ -37,7 +37,7 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         }
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
         user.getRoles().forEach(role -> {
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
+            authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
         });
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(), user.getPassword(), authorities);
@@ -46,14 +46,14 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
 
     @Override
     public User saveUser(User user) {
-        log.info("Saving new user {}", user.getName());
+        log.info("Saving new user {}", user.getUsername());
         user.setPassword(passwordEncoder.encode(user.getPassword())); // récupère le mdp de l'utilisateur et l'encode
         return userRepository.save(user);
     }
 
     @Override
     public Role saveRole(Role role) {
-        log.info("Saving new role {}", role.getName());
+        log.info("Saving new role {}", role.getRoleName());
         return roleRepository.save(role);
     }
 

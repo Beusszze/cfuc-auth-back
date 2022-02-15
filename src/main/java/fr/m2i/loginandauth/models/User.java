@@ -13,7 +13,6 @@ import java.util.Collection;
 public class User {
     @Id
     private String id;
-    private String name;
     private String username;
     private String password;
     private Collection<Role> roles = new ArrayList<>();
