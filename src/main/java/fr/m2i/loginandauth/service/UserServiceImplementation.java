@@ -6,6 +6,7 @@ import fr.m2i.loginandauth.repository.RoleRepository;
 import fr.m2i.loginandauth.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,13 +18,16 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-@Service @RequiredArgsConstructor @Transactional
+@Service @Transactional
 @Slf4j
 public class UserServiceImplementation implements UserService, UserDetailsService {
 
-    private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
-    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private  UserRepository userRepository;
+    @Autowired
+    private  RoleRepository roleRepository;
+    @Autowired
+    private  PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -77,5 +81,4 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         log.info("Fetching all users");
         return userRepository.findAll();
     }
-
 }

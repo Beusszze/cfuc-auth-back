@@ -40,9 +40,6 @@ public class LoginAndAuthApplication {
 
             userService.addRoleToUser("ben", "ROLE_USER");
             userService.addRoleToUser("xxtotodu59xx", "ROLE_ADMIN");
-
-
         };
     }
-
 }
