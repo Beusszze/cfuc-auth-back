@@ -14,7 +14,7 @@ import java.util.Collection;
 public class Role {
     @Id
     private String id;
-    private String RoleName;
+    private String roleName;
   //  @DBRef
   //  private Collection<User> users = new ArrayList<>();
 }

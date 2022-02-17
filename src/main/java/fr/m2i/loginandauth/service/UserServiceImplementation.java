@@ -65,7 +65,7 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     public void addRoleToUser(String username, String roleName) {
         log.info("Adding role {} to the user {}", roleName, username);
         User user = userRepository.findByUsername(username);
-        Role role = roleRepository.findByName(roleName);
+        Role role = roleRepository.findByRoleName(roleName);
         user.getRoles().add(role);
         userRepository.save(user);
     }
