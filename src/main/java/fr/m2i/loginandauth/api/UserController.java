@@ -9,7 +9,9 @@ import fr.m2i.loginandauth.dto.RoleToUserDTO;
 import fr.m2i.loginandauth.models.Role;
 import fr.m2i.loginandauth.models.User;
 import fr.m2i.loginandauth.service.UserService;
+import fr.m2i.loginandauth.service.UserServiceImplementation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -17,11 +19,13 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.*;
 
-@RestController @RequiredArgsConstructor
+@RestController
 @RequestMapping("/api")
+@CrossOrigin(origins="http://localhost:8100/**")
 public class UserController {
 
-    private final UserService userService;
+    @Autowired
+    private UserServiceImplementation userService;
 
     @GetMapping("/users")
     public ResponseEntity<List<User>>getUsers () {
